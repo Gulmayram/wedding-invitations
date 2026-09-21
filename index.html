@@ -3,456 +3,1586 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Анастасия & Александр — Свадебное Приглашение</title>
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Cormorant Garamond, Montserrat, Great Vibes -->
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <!-- FontAwesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        serif: ['"Cormorant Garamond"', 'serif'],
-                        sans: ['"Montserrat"', 'sans-serif'],
-                        script: ['"Great Vibes"', 'cursive'],
-                    },
-                    colors: {
-                        ivory: {
-                            DEFAULT: '#FFFFF0',
-                            light: '#FFFDF9',
-                            dark: '#F5F2EB',
-                        },
-                        cream: {
-                            DEFAULT: '#FDFBF7',
-                            dark: '#F4EFE6',
-                            deep: '#E8E1D5',
-                        },
-                        champagne: {
-                            light: '#FBF8F3',
-                            DEFAULT: '#F4ECE1',
-                            dark: '#D8CCA8',
-                        },
-                        rosegold: {
-                            light: '#F3D8CD',
-                            DEFAULT: '#D4A373',
-                            dark: '#BC8A5F',
-                        },
-                        pearl: '#FAF9F6'
-                    }
-                }
-            }
-        }
-    </script>
+
+    <title>Анатолий & Ксения — Wedding Invitation</title>
+
+    <!-- Elegant serif + script + clean text -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&family=Italianno&display=swap"
+          rel="stylesheet">
+
     <style>
+        /* =========================================================
+           ROOT
+        ========================================================= */
+
+        :root {
+            --olive: #68705a;
+            --olive-dark: #4c5342;
+            --olive-light: #8b9279;
+
+            --cream: #f7f1e5;
+            --cream-dark: #ece3d2;
+
+            --brown: #493d34;
+            --brown-light: #74675b;
+
+            --paper: #faf6ed;
+
+            --line: rgba(73, 61, 52, .35);
+
+            --serif: "Cormorant Garamond", Georgia, serif;
+            --script: "Italianno", cursive;
+            --sans: "DM Sans", Arial, sans-serif;
+        }
+
+
+        /* =========================================================
+           RESET
+        ========================================================= */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: #FDFBF7;
-            color: #4A453F;
-            overflow-x: hidden;
+            margin: 0;
+            background: var(--olive-dark);
+            color: var(--brown);
+            font-family: var(--serif);
         }
-        .font-serif {
-            font-family: 'Cormorant Garamond', serif;
+
+        img {
+            display: block;
+            width: 100%;
         }
-        .font-script {
-            font-family: 'Great Vibes', cursive;
+
+        button,
+        input,
+        textarea {
+            font: inherit;
         }
-        /* Soft creamy glassmorphism */
-        .glass-card {
-            background: rgba(255, 255, 255, 0.75);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(212, 163, 115, 0.25);
-            box-shadow: 0 20px 40px -15px rgba(188, 138, 95, 0.08);
+
+        a {
+            color: inherit;
+            text-decoration: none;
         }
-        .glass-card-solid {
-            background: #FFFFFF;
-            border: 1px solid rgba(212, 163, 115, 0.2);
-            box-shadow: 0 20px 40px -15px rgba(188, 138, 95, 0.1);
+
+
+        /* =========================================================
+           MAIN INVITATION
+        ========================================================= */
+
+        .invitation {
+            width: min(100%, 760px);
+            margin: 0 auto;
+            background: var(--cream);
+            overflow: hidden;
+            box-shadow: 0 0 80px rgba(0, 0, 0, .25);
         }
-        .rosegold-gradient-text {
-            background: linear-gradient(135deg, #C28E61 0%, #D4A373 50%, #B07D56 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+
+
+        /* =========================================================
+           TYPOGRAPHY
+        ========================================================= */
+
+        .script {
+            font-family: var(--script);
+            font-weight: 400;
         }
-        .rosegold-btn {
-            background: linear-gradient(135deg, #D4A373 0%, #BC8A5F 100%);
-            transition: all 0.3s ease;
-            color: #ffffff;
+
+        .serif {
+            font-family: var(--serif);
         }
-        .rosegold-btn:hover {
-            background: linear-gradient(135deg, #E0B185 0%, #C28E61 100%);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px -5px rgba(212, 163, 115, 0.4);
+
+        .eyebrow {
+            font-family: var(--sans);
+            font-size: 10px;
+            letter-spacing: .25em;
+            text-transform: uppercase;
         }
-        /* Floating romantic particles animation */
-        @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-12px) rotate(3deg); }
+
+        .section-title {
+            margin: 0;
+            font-family: var(--script);
+            font-size: clamp(58px, 10vw, 90px);
+            line-height: .75;
+            font-weight: 400;
+            color: var(--brown);
         }
-        .floating {
-            animation: float 6s ease-in-out infinite;
+
+        .body-copy {
+            max-width: 480px;
+            margin: 22px auto 0;
+            font-size: 18px;
+            line-height: 1.55;
+            font-weight: 300;
         }
-        .floating-delayed {
-            animation: float 8s ease-in-out infinite 2s;
+
+
+        /* =========================================================
+           HERO
+        ========================================================= */
+
+        .hero {
+            position: relative;
+            min-height: 920px;
+            background: var(--olive);
+            color: var(--cream);
+            display: flex;
+            align-items: flex-end;
+            overflow: hidden;
         }
-        /* Photo zoom hover effect */
-        .photo-hover {
-            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+
+        .hero-image {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+
+            /* Replace this URL with your photo */
+            background:
+                linear-gradient(
+                    rgba(65, 72, 56, .36),
+                    rgba(65, 72, 56, .62)
+                ),
+                url("https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1200&q=85")
+                center / cover;
         }
-        .photo-hover:hover {
-            transform: scale(1.04);
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(
+                    to bottom,
+                    rgba(49, 54, 43, .15) 0%,
+                    rgba(49, 54, 43, .12) 45%,
+                    rgba(49, 54, 43, .76) 100%
+                );
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            padding: 80px 60px 75px;
+            text-align: center;
+        }
+
+        .hero-small {
+            font-family: var(--sans);
+            font-size: 10px;
+            letter-spacing: .4em;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            opacity: .9;
+        }
+
+        .hero-names {
+            margin: 0;
+            font-family: var(--serif);
+            font-size: clamp(65px, 12vw, 120px);
+            line-height: .76;
+            font-weight: 300;
+            letter-spacing: -.04em;
+        }
+
+        .hero-and {
+            display: block;
+            font-family: var(--script);
+            font-size: 64px;
+            line-height: .8;
+            margin: 16px 0;
+        }
+
+        .hero-subtitle {
+            margin-top: 35px;
+            font-family: var(--sans);
+            font-size: 10px;
+            letter-spacing: .32em;
+            text-transform: uppercase;
+        }
+
+
+        /* =========================================================
+           INTRO / DATE
+        ========================================================= */
+
+        .intro {
+            padding: 85px 55px;
+            text-align: center;
+            background: var(--cream);
+        }
+
+        .intro-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 60px;
+            max-width: 620px;
+            margin: 0 auto;
+        }
+
+        .polaroid {
+            position: relative;
+            background: #eee7d9;
+            padding: 13px 13px 42px;
+            transform: rotate(-2deg);
+            box-shadow: 0 10px 25px rgba(54, 44, 35, .15);
+        }
+
+        .polaroid img {
+            aspect-ratio: 4 / 5;
+            object-fit: cover;
+            filter: sepia(.12) saturate(.72);
+        }
+
+        .polaroid-caption {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 12px;
+            text-align: center;
+            font-family: var(--script);
+            font-size: 25px;
+        }
+
+        .date-side {
+            text-align: left;
+        }
+
+        .date-script {
+            font-family: var(--script);
+            font-size: 65px;
+            line-height: .75;
+            margin-bottom: 18px;
+        }
+
+        .date-place {
+            font-size: 17px;
+            line-height: 1.35;
+        }
+
+        .thin-line {
+            width: 75px;
+            height: 1px;
+            background: var(--line);
+            margin: 25px 0;
+        }
+
+
+        /* =========================================================
+           OUR STORY
+        ========================================================= */
+
+        .story {
+            position: relative;
+            min-height: 620px;
+            background: var(--olive);
+            color: var(--cream);
+            padding: 100px 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .story-image {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+
+            background:
+                linear-gradient(rgba(64, 72, 55, .55), rgba(64, 72, 55, .72)),
+                url("https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=85")
+                center / cover;
+        }
+
+        .story::after {
+            content: "";
+            position: absolute;
+            inset: 65px;
+            border: 1px solid rgba(247, 241, 229, .5);
+        }
+
+        .story-content {
+            position: relative;
+            z-index: 2;
+            max-width: 520px;
+        }
+
+        .story-title {
+            font-family: var(--script);
+            font-size: 76px;
+            line-height: .7;
+            margin-bottom: 40px;
+        }
+
+        .story-text {
+            font-size: 18px;
+            line-height: 1.6;
+            font-weight: 300;
+        }
+
+        .story-signature {
+            font-family: var(--script);
+            font-size: 40px;
+            margin-top: 30px;
+        }
+
+
+        /* =========================================================
+           THE DAY
+        ========================================================= */
+
+        .day {
+            padding: 95px 55px 100px;
+            text-align: center;
+            background: var(--cream);
+        }
+
+        .day-title {
+            font-size: 60px;
+            line-height: .8;
+            font-weight: 400;
+            margin-bottom: 20px;
+        }
+
+        .day-intro {
+            font-size: 17px;
+            max-width: 470px;
+            margin: 0 auto 55px;
+            line-height: 1.5;
+        }
+
+        .timeline {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .event {
+            display: grid;
+            grid-template-columns: 85px 1fr 90px;
+            align-items: center;
+            gap: 20px;
+            padding: 27px 0;
+            border-bottom: 1px solid rgba(73, 61, 52, .22);
+        }
+
+        .event:last-child {
+            border-bottom: 0;
+        }
+
+        .event-time {
+            font-family: var(--serif);
+            font-size: 22px;
+        }
+
+        .event-icon {
+            width: 58px;
+            height: 58px;
+            margin: auto;
+            border: 1px solid var(--brown);
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            font-size: 22px;
+        }
+
+        .event-name {
+            text-align: left;
+            font-size: 23px;
+        }
+
+        .event-description {
+            font-family: var(--sans);
+            font-size: 9px;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            color: var(--brown-light);
+            margin-top: 4px;
+        }
+
+
+        /* =========================================================
+           CALENDAR
+        ========================================================= */
+
+        .calendar-section {
+            padding: 90px 50px;
+            background: var(--olive);
+            color: var(--cream);
+            text-align: center;
+        }
+
+        .calendar-title {
+            font-family: var(--script);
+            font-size: 78px;
+            line-height: .7;
+            margin-bottom: 45px;
+        }
+
+        .calendar {
+            max-width: 470px;
+            margin: 0 auto;
+        }
+
+        .calendar-month {
+            font-family: var(--serif);
+            font-size: 28px;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 7px;
+            font-family: var(--sans);
+            font-size: 12px;
+        }
+
+        .calendar-grid span {
+            height: 42px;
+            display: grid;
+            place-items: center;
+        }
+
+        .calendar-weekday {
+            opacity: .65;
+            font-size: 9px;
+            letter-spacing: .1em;
+        }
+
+        .calendar-day {
+            position: relative;
+        }
+
+        .calendar-day.wedding {
+            border: 1px solid var(--cream);
+            border-radius: 50%;
+        }
+
+        .calendar-day.wedding::after {
+            content: "♥";
+            position: absolute;
+            bottom: -3px;
+            font-size: 8px;
+        }
+
+
+        /* =========================================================
+           DRESS CODE
+        ========================================================= */
+
+        .dress {
+            padding: 100px 55px;
+            text-align: center;
+            background: var(--paper);
+        }
+
+        .dress-title {
+            font-family: var(--script);
+            font-size: 78px;
+            line-height: .7;
+            margin-bottom: 35px;
+        }
+
+        .dress-text {
+            max-width: 470px;
+            margin: auto;
+            font-size: 18px;
+            line-height: 1.55;
+        }
+
+        .dress-icons {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            margin: 50px 0 35px;
+        }
+
+        .dress-icon {
+            width: 105px;
+            height: 105px;
+            border: 1px solid var(--brown);
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-size: 38px;
+        }
+
+        .dress-icon span {
+            font-family: var(--sans);
+            font-size: 8px;
+            letter-spacing: .15em;
+            text-transform: uppercase;
+            margin-top: 5px;
+        }
+
+        .palette {
+            display: flex;
+            justify-content: center;
+            gap: 6px;
+            margin-top: 35px;
+        }
+
+        .palette span {
+            width: 65px;
+            height: 18px;
+        }
+
+        .p1 { background: #9da187; }
+        .p2 { background: #676d57; }
+        .p3 { background: #504238; }
+        .p4 { background: #85786b; }
+
+
+        /* =========================================================
+           DETAILS
+        ========================================================= */
+
+        .details {
+            padding: 100px 60px;
+            background: var(--cream);
+            text-align: center;
+        }
+
+        .details-title {
+            font-family: var(--script);
+            font-size: 80px;
+            line-height: .7;
+            margin-bottom: 40px;
+        }
+
+        .details-copy {
+            max-width: 530px;
+            margin: auto;
+            font-size: 18px;
+            line-height: 1.65;
+        }
+
+        .bow {
+            font-size: 50px;
+            margin: 40px 0;
+            line-height: 1;
+        }
+
+
+        /* =========================================================
+           LOCATION
+        ========================================================= */
+
+        .location {
+            background: var(--brown);
+            color: var(--cream);
+            text-align: center;
+        }
+
+        .location-content {
+            padding: 85px 50px;
+        }
+
+        .location-title {
+            font-family: var(--script);
+            font-size: 82px;
+            line-height: .7;
+            margin-bottom: 35px;
+        }
+
+        .location-name {
+            font-family: var(--serif);
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+
+        .location-address {
+            font-family: var(--sans);
+            font-size: 12px;
+            letter-spacing: .08em;
+            line-height: 1.6;
+            opacity: .8;
+        }
+
+        .location-photo {
+            height: 390px;
+            object-fit: cover;
+            filter: sepia(.2) saturate(.65);
+            background:
+                url("https://images.unsplash.com/photo-1507504031003-b417219a0fde?auto=format&fit=crop&w=1200&q=85")
+                center / cover;
+        }
+
+        .map-button {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 13px 30px;
+            border: 1px solid rgba(247, 241, 229, .7);
+            font-family: var(--sans);
+            font-size: 10px;
+            letter-spacing: .2em;
+            text-transform: uppercase;
+            transition: .25s;
+        }
+
+        .map-button:hover {
+            background: var(--cream);
+            color: var(--brown);
+        }
+
+
+        /* =========================================================
+           RSVP
+        ========================================================= */
+
+        .rsvp {
+            padding: 100px 55px;
+            background: var(--olive);
+            color: var(--cream);
+        }
+
+        .rsvp-inner {
+            max-width: 500px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .rsvp-title {
+            font-family: var(--script);
+            font-size: 85px;
+            line-height: .7;
+            margin-bottom: 35px;
+        }
+
+        .rsvp-subtitle {
+            font-size: 17px;
+            line-height: 1.5;
+            margin-bottom: 45px;
+        }
+
+        .form {
+            text-align: left;
+        }
+
+        .field {
+            margin-bottom: 25px;
+        }
+
+        .field label {
+            display: block;
+            font-family: var(--sans);
+            font-size: 9px;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .field input,
+        .field textarea {
+            width: 100%;
+            border: 0;
+            border-bottom: 1px solid rgba(247, 241, 229, .55);
+            background: transparent;
+            color: var(--cream);
+            padding: 12px 2px;
+            outline: none;
+            resize: vertical;
+        }
+
+        .field input::placeholder,
+        .field textarea::placeholder {
+            color: rgba(247, 241, 229, .5);
+        }
+
+        .radio-row {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .radio {
+            flex: 1;
+            min-width: 150px;
+        }
+
+        .radio input {
+            display: none;
+        }
+
+        .radio span {
+            display: block;
+            padding: 14px;
+            border: 1px solid rgba(247, 241, 229, .35);
+            text-align: center;
+            font-family: var(--sans);
+            font-size: 10px;
+            cursor: pointer;
+            transition: .2s;
+        }
+
+        .radio input:checked + span {
+            background: var(--cream);
+            color: var(--brown);
+        }
+
+        .submit {
+            width: 100%;
+            border: 1px solid var(--cream);
+            background: transparent;
+            color: var(--cream);
+            padding: 16px;
+            cursor: pointer;
+            font-family: var(--sans);
+            font-size: 10px;
+            letter-spacing: .25em;
+            text-transform: uppercase;
+            transition: .25s;
+            margin-top: 10px;
+        }
+
+        .submit:hover {
+            background: var(--cream);
+            color: var(--brown);
+        }
+
+        #formMessage {
+            display: none;
+            margin-top: 20px;
+            font-family: var(--sans);
+            font-size: 12px;
+            text-align: center;
+        }
+
+
+        /* =========================================================
+           FOOTER
+        ========================================================= */
+
+        footer {
+            background: var(--cream);
+            text-align: center;
+            padding: 75px 30px 90px;
+        }
+
+        .footer-names {
+            font-family: var(--script);
+            font-size: 65px;
+            line-height: .7;
+        }
+
+        .footer-date {
+            margin-top: 35px;
+            font-family: var(--sans);
+            font-size: 9px;
+            letter-spacing: .3em;
+            text-transform: uppercase;
+        }
+
+        .footer-heart {
+            margin-top: 30px;
+            font-size: 18px;
+        }
+
+
+        /* =========================================================
+           RESPONSIVE
+        ========================================================= */
+
+        @media (max-width: 650px) {
+
+            body {
+                background: var(--cream);
+            }
+
+            .invitation {
+                width: 100%;
+                box-shadow: none;
+            }
+
+            .hero {
+                min-height: 720px;
+            }
+
+            .hero-content {
+                padding: 60px 25px 55px;
+            }
+
+            .hero-names {
+                font-size: 70px;
+            }
+
+            .hero-and {
+                font-size: 48px;
+            }
+
+            .intro {
+                padding: 65px 25px;
+            }
+
+            .intro-grid {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+
+            .date-side {
+                text-align: center;
+            }
+
+            .thin-line {
+                margin: 20px auto;
+            }
+
+            .story {
+                min-height: 580px;
+                padding: 70px 30px;
+            }
+
+            .story::after {
+                inset: 30px;
+            }
+
+            .story-title {
+                font-size: 60px;
+            }
+
+            .story-text {
+                font-size: 16px;
+            }
+
+            .day {
+                padding: 70px 25px;
+            }
+
+            .day-title {
+                font-size: 52px;
+            }
+
+            .event {
+                grid-template-columns: 65px 1fr 65px;
+                gap: 10px;
+            }
+
+            .event-name {
+                font-size: 19px;
+            }
+
+            .event-icon {
+                width: 48px;
+                height: 48px;
+                font-size: 18px;
+            }
+
+            .calendar-section,
+            .dress,
+            .details,
+            .location-content,
+            .rsvp {
+                padding-left: 25px;
+                padding-right: 25px;
+            }
+
+            .calendar-title,
+            .dress-title,
+            .details-title,
+            .location-title,
+            .rsvp-title {
+                font-size: 64px;
+            }
+
+            .dress-icons {
+                gap: 20px;
+            }
+
+            .dress-icon {
+                width: 90px;
+                height: 90px;
+            }
+
+            .palette span {
+                width: 50px;
+            }
+
+            .location-photo {
+                height: 300px;
+            }
+
+            .footer-names {
+                font-size: 55px;
+            }
         }
     </style>
 </head>
-<body class="min-h-screen relative flex flex-col items-center justify-between selection:bg-rosegold selection:text-white">
 
-    <div class="absolute top-0 left-1/4 w-[500px] h-[500px] bg-rosegold/10 rounded-full blur-[120px] pointer-events-none"></div>
-    <div class="absolute top-1/3 right-10 w-[400px] h-[400px] bg-champagne-dark/20 rounded-full blur-[100px] pointer-events-none"></div>
-    <div class="absolute bottom-1/4 left-10 w-[450px] h-[450px] bg-rosegold/10 rounded-full blur-[120px] pointer-events-none"></div>
 
-    <!-- Main Container -->
-    <main class="w-full max-w-3xl mx-auto px-4 py-12 z-10 flex flex-col gap-12">
+<body>
 
-        <div class="glass-card rounded-[2.5rem] p-8 md:p-14 text-center relative overflow-hidden">
-            <!-- Decorative corner accent -->
-            <div class="absolute -top-12 -right-12 text-rosegold/15 text-9xl font-serif pointer-events-none">🕊️</div>
-            <div class="absolute -bottom-10 -left-10 text-rosegold/15 text-8xl font-serif pointer-events-none">🌸</div>
+<main class="invitation">
 
-            <div class="inline-block px-5 py-2 rounded-full bg-champagne border border-rosegold/30 text-rosegold-dark text-xs tracking-widest uppercase mb-6 font-medium shadow-sm">
-                Приглашение на свадьбу
+    <!-- =======================================================
+         HERO
+    ======================================================== -->
+
+    <section class="hero">
+
+        <div class="hero-image"></div>
+        <div class="hero-overlay"></div>
+
+        <div class="hero-content">
+
+            <div class="hero-small">
+                Special invitation
             </div>
 
-            <p class="font-script text-3xl md:text-4xl text-rosegold mb-2">Дорогие родные и друзья!</p>
-            
-            <h1 class="font-serif text-5xl md:text-7xl font-bold tracking-wide mb-6 rosegold-gradient-text">
-                Анастасия <span class="font-script text-4xl md:text-6xl text-rosegold font-normal">&</span> Александр
+            <h1 class="hero-names">
+                Анатолий
+                <span class="hero-and">&</span>
+                Ксения
             </h1>
 
-            <p class="text-gray-600 text-base md:text-lg font-light max-w-xl mx-auto mb-10 leading-relaxed">
-                В нашей жизни предстоит самый важный и прекрасный день. Мы будем счастливы разделить этот незабываемый праздник с самыми близкими и дорогими нашему сердцу людьми.
-            </p>
-
-            <!-- Countdown Timer -->
-            <div class="grid grid-cols-3 gap-4 max-w-md mx-auto mb-10 text-center">
-                <div class="glass-card-solid border border-rosegold/25 rounded-2xl p-4 shadow-sm">
-                    <span id="days" class="block font-serif text-3xl md:text-4xl font-bold text-rosegold-dark">00</span>
-                    <span class="text-xs text-gray-500 uppercase tracking-wider font-medium">Дней</span>
-                </div>
-                <div class="glass-card-solid border border-rosegold/25 rounded-2xl p-4 shadow-sm">
-                    <span id="hours" class="block font-serif text-3xl md:text-4xl font-bold text-rosegold-dark">00</span>
-                    <span class="text-xs text-gray-500 uppercase tracking-wider font-medium">Часов</span>
-                </div>
-                <div class="glass-card-solid border border-rosegold/25 rounded-2xl p-4 shadow-sm">
-                    <span id="minutes" class="block font-serif text-3xl md:text-4xl font-bold text-rosegold-dark">00</span>
-                    <span class="text-xs text-gray-500 uppercase tracking-wider font-medium">Минут</span>
-                </div>
+            <div class="hero-subtitle">
+                приглашают разделить с ними этот день
             </div>
 
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-6 text-sm text-gray-600 border-t border-rosegold/20 pt-6">
-                <div class="flex items-center gap-2.5">
-                    <i class="fa-regular fa-calendar text-rosegold text-lg"></i>
-                    <span class="font-medium">15 Октября 2026, 16:00</span>
+        </div>
+    </section>
+
+
+    <!-- =======================================================
+         PHOTO + DATE
+    ======================================================== -->
+
+    <section class="intro">
+
+        <div class="intro-grid">
+
+            <div class="polaroid">
+
+                <img
+                    src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=700&q=85"
+                    alt="Анатолий и Ксения"
+                >
+
+                <div class="polaroid-caption">
+                    our story
                 </div>
-                <div class="hidden sm:block text-rosegold">•</div>
-                <div class="flex items-center gap-2.5">
-                    <i class="fa-solid fa-location-dot text-rosegold text-lg"></i>
-                    <span class="font-medium">Усадьба «Белый Сад», Зал Панорама</span>
-                </div>
+
             </div>
+
+
+            <div class="date-side">
+
+                <div class="date-script">
+                    03 октября
+                </div>
+
+                <div class="thin-line"></div>
+
+                <div class="date-place">
+                    Пятница<br>
+                    начало праздника в 12:00
+                </div>
+
+                <div class="thin-line"></div>
+
+                <div class="date-place">
+                    Москва<br>
+                    загородная усадьба
+                </div>
+
+            </div>
+
         </div>
 
-        <div class="flex flex-col gap-4">
-            <div class="text-center mb-2">
-                <span class="font-script text-3xl text-rosegold">Наша история</span>
-                <h2 class="font-serif text-3xl font-bold text-gray-800">Мгновения счастья</h2>
+    </section>
+
+
+    <!-- =======================================================
+         OUR SPECIAL DAY
+    ======================================================== -->
+
+    <section class="story">
+
+        <div class="story-image"></div>
+
+        <div class="story-content">
+
+            <div class="story-title">
+                Наш особенный день
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 h-auto md:h-96">
-                <div class="rounded-3xl overflow-hidden shadow-lg relative h-72 md:h-full group cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=80')">
-                    <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80" alt="Couple romantic moment" class="w-full h-full object-cover photo-hover" onerror="this.src='https://placehold.co/600x800/f4ece1/bc8a5f?text=Love+Story'">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
-                        <span class="text-white text-sm font-medium flex items-center gap-2"><i class="fa-solid fa-expand"></i> Увеличить фото</span>
-                    </div>
-                </div>
-                <div class="rounded-3xl overflow-hidden shadow-lg relative h-72 md:h-full group cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=1200&q=80')">
-                    <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?auto=format&fit=crop&w=800&q=80" alt="Wedding rings" class="w-full h-full object-cover photo-hover" onerror="this.src='https://placehold.co/600x800/f4ece1/bc8a5f?text=Rings'">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
-                        <span class="text-white text-sm font-medium flex items-center gap-2"><i class="fa-solid fa-expand"></i> Увеличить фото</span>
-                    </div>
-                </div>
-                <div class="rounded-3xl overflow-hidden shadow-lg relative h-72 md:h-full group cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1200&q=80')">
-                    <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=800&q=80" alt="Wedding celebration" class="w-full h-full object-cover photo-hover" onerror="this.src='https://placehold.co/600x800/f4ece1/bc8a5f?text=Celebration'">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
-                        <span class="text-white text-sm font-medium flex items-center gap-2"><i class="fa-solid fa-expand"></i> Увеличить фото</span>
-                    </div>
-                </div>
+            <div class="story-text">
+
+                Есть дни, которые становятся частью нашей
+                истории навсегда.
+
+                <br><br>
+
+                Мы хотим провести этот день рядом с теми,
+                кто дорог нам больше всего.
+
+                <br><br>
+
+                Будем счастливы видеть вас среди наших гостей
+                и вместе создать воспоминания, к которым
+                захочется возвращаться снова и снова.
+
             </div>
+
+            <div class="story-signature">
+                С любовью, Анатолий & Ксения
+            </div>
+
         </div>
 
-        <div class="glass-card rounded-[2.5rem] p-8 md:p-12 shadow-xl">
-            <div class="text-center mb-10">
-                <span class="font-script text-3xl text-rosegold">Программа дня</span>
-                <h2 class="font-serif text-3xl md:text-4xl font-bold text-gray-800 mt-1">Как пройдет наш день</h2>
-            </div>
+    </section>
 
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 relative">
-                <!-- Timeline item 1 -->
-                <div class="glass-card-solid rounded-2xl p-6 text-center border border-rosegold/20 relative">
-                    <div class="w-12 h-12 mx-auto mb-4 rounded-full bg-champagne flex items-center justify-center text-rosegold text-xl shadow-sm">
-                        <i class="fa-solid fa-ring"></i>
-                    </div>
-                    <span class="font-serif text-2xl font-bold text-rosegold-dark block mb-1">16:00</span>
-                    <h3 class="font-semibold text-gray-800 mb-2">Сбор гостей</h3>
-                    <p class="text-xs text-gray-500 leading-relaxed">Приветственный фуршет, легкая музыка и знакомство с гостями.</p>
-                </div>
-                <!-- Timeline item 2 -->
-                <div class="glass-card-solid rounded-2xl p-6 text-center border border-rosegold/20 relative">
-                    <div class="w-12 h-12 mx-auto mb-4 rounded-full bg-champagne flex items-center justify-center text-rosegold text-xl shadow-sm">
-                        <i class="fa-solid fa-heart"></i>
-                    </div>
-                    <span class="font-serif text-2xl font-bold text-rosegold-dark block mb-1">17:00</span>
-                    <h3 class="font-semibold text-gray-800 mb-2">Церемония</h3>
-                    <p class="text-xs text-gray-500 leading-relaxed">Самый трогательный момент — обмен клятвами под аркой из живых цветов.</p>
-                </div>
-                <!-- Timeline item 3 -->
-                <div class="glass-card-solid rounded-2xl p-6 text-center border border-rosegold/20 relative">
-                    <div class="w-12 h-12 mx-auto mb-4 rounded-full bg-champagne flex items-center justify-center text-rosegold text-xl shadow-sm">
-                        <i class="fa-solid fa-glass-cheers"></i>
-                    </div>
-                    <span class="font-serif text-2xl font-bold text-rosegold-dark block mb-1">18:00</span>
-                    <h3 class="font-semibold text-gray-800 mb-2">Банкет</h3>
-                    <p class="text-xs text-gray-500 leading-relaxed">Праздничный ужин, теплые тосты, поздравления и танцы до упаду.</p>
-                </div>
-                <!-- Timeline item 4 -->
-                <div class="glass-card-solid rounded-2xl p-6 text-center border border-rosegold/20 relative">
-                    <div class="w-12 h-12 mx-auto mb-4 rounded-full bg-champagne flex items-center justify-center text-rosegold text-xl shadow-sm">
-                        <i class="fa-solid fa-cake-candles"></i>
-                    </div>
-                    <span class="font-serif text-2xl font-bold text-rosegold-dark block mb-1">21:30</span>
-                    <h3 class="font-semibold text-gray-800 mb-2">Свадебный торт</h3>
-                    <p class="text-xs text-gray-500 leading-relaxed">Кульминационный сладкий финал вечера и зажжение бенгальских огней.</p>
-                </div>
-            </div>
+
+    <!-- =======================================================
+         THE DAY
+    ======================================================== -->
+
+    <section class="day">
+
+        <div class="eyebrow">
+            our wedding
         </div>
 
-        <div class="flex flex-col gap-4">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div class="rounded-3xl overflow-hidden shadow-lg h-72 md:h-80 relative group cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=1200&q=80')">
-                    <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=800&q=80" alt="Couple embrace" class="w-full h-full object-cover photo-hover" onerror="this.src='https://placehold.co/600x400/f4ece1/bc8a5f?text=Romantic+Moment'">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
-                        <span class="text-white text-sm font-medium flex items-center gap-2"><i class="fa-solid fa-expand"></i> Увеличить фото</span>
-                    </div>
-                </div>
-                <div class="rounded-3xl overflow-hidden shadow-lg h-72 md:h-80 relative group cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1537633552985-df8429e8048b?auto=format&fit=crop&w=1200&q=80')">
-                    <img src="https://images.unsplash.com/photo-1537633552985-df8429e8048b?auto=format&fit=crop&w=800&q=80" alt="Wedding flowers" class="w-full h-full object-cover photo-hover" onerror="this.src='https://placehold.co/600x400/f4ece1/bc8a5f?text=Decor'">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
-                        <span class="text-white text-sm font-medium flex items-center gap-2"><i class="fa-solid fa-expand"></i> Увеличить фото</span>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <h2 class="day-title">
+            Программа дня
+        </h2>
 
-        <div class="glass-card rounded-[2.5rem] p-8 md:p-14 shadow-xl">
-            <div class="text-center mb-8">
-                <span class="font-script text-3xl text-rosegold">Ждем вашего ответа</span>
-                <h2 class="font-serif text-3xl md:text-4xl font-bold text-gray-800 mb-2 mt-1">Подтверждение присутствия</h2>
-                <p class="text-sm text-gray-500 max-w-md mx-auto">Пожалуйста, дайте нам знать о вашем решении до 1 октября 2026 года, чтобы мы учли все детали.</p>
-            </div>
+        <p class="day-intro">
+            Мы подготовили для вас небольшой маршрут нашего
+            особенного дня.
+        </p>
 
-            <form id="rsvpForm" class="space-y-6 max-w-xl mx-auto">
-                <!-- Guest Name -->
+
+        <div class="timeline">
+
+            <div class="event">
+
+                <div class="event-time">
+                    12:00
+                </div>
+
                 <div>
-                    <label class="block text-xs uppercase tracking-wider text-gray-600 mb-2 font-semibold">Ваше Имя и Фамилия <span class="text-rosegold">*</span></label>
-                    <div class="relative">
-                        <span class="absolute inset-y-0 left-0 flex items-center pl-4 text-gray-400">
-                            <i class="fa-regular fa-user"></i>
-                        </span>
-                        <input type="text" id="guestName" required placeholder="Например: Анна и Алексей Смирновы" 
-                            class="w-full bg-white border border-rosegold/30 rounded-xl py-3.5 pl-11 pr-4 text-gray-800 placeholder-gray-400 focus:outline-none focus:border-rosegold transition-colors text-sm shadow-sm">
+                    <div class="event-icon">◌</div>
+                </div>
+
+                <div class="event-name">
+                    Сбор гостей
+                    <div class="event-description">
+                        welcome
                     </div>
                 </div>
 
-                <!-- Attendance Status -->
+            </div>
+
+
+            <div class="event">
+
+                <div class="event-time">
+                    13:00
+                </div>
+
                 <div>
-                    <label class="block text-xs uppercase tracking-wider text-gray-600 mb-2 font-semibold">Сможете ли вы присутствовать? <span class="text-rosegold">*</span></label>
-                    <div class="grid grid-cols-2 gap-4">
-                        <label class="cursor-pointer">
-                            <input type="radio" name="attendance" value="С радостью приду" checked class="peer sr-only">
-                            <div class="p-3.5 text-center rounded-xl bg-white border border-rosegold/30 peer-checked:border-rosegold peer-checked:bg-rosegold/10 peer-checked:text-rosegold-dark text-sm font-medium transition-all shadow-sm">
-                                <i class="fa-solid fa-check mr-2 text-rosegold"></i> С радостью приду
-                            </div>
+                    <div class="event-icon">♡</div>
+                </div>
+
+                <div class="event-name">
+                    Церемония
+                    <div class="event-description">
+                        ceremony
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="event">
+
+                <div class="event-time">
+                    15:00
+                </div>
+
+                <div>
+                    <div class="event-icon">♨</div>
+                </div>
+
+                <div class="event-name">
+                    Праздничный ужин
+                    <div class="event-description">
+                        dinner
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="event">
+
+                <div class="event-time">
+                    18:00
+                </div>
+
+                <div>
+                    <div class="event-icon">♩</div>
+                </div>
+
+                <div class="event-name">
+                    Музыка & танцы
+                    <div class="event-description">
+                        party
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="event">
+
+                <div class="event-time">
+                    21:00
+                </div>
+
+                <div>
+                    <div class="event-icon">✦</div>
+                </div>
+
+                <div class="event-name">
+                    Торт
+                    <div class="event-description">
+                        celebration
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =======================================================
+         CALENDAR
+    ======================================================== -->
+
+    <section class="calendar-section">
+
+        <div class="calendar-title">
+            Запомните дату
+        </div>
+
+        <div class="calendar">
+
+            <div class="calendar-month">
+                Октябрь 2025
+            </div>
+
+            <div class="calendar-grid">
+
+                <span class="calendar-weekday">ПН</span>
+                <span class="calendar-weekday">ВТ</span>
+                <span class="calendar-weekday">СР</span>
+                <span class="calendar-weekday">ЧТ</span>
+                <span class="calendar-weekday">ПТ</span>
+                <span class="calendar-weekday">СБ</span>
+                <span class="calendar-weekday">ВС</span>
+
+                <span></span>
+                <span></span>
+                <span>1</span>
+                <span>2</span>
+
+                <span class="calendar-day wedding">
+                    3
+                </span>
+
+                <span>4</span>
+                <span>5</span>
+
+                <span>6</span>
+                <span>7</span>
+                <span>8</span>
+                <span>9</span>
+                <span>10</span>
+                <span>11</span>
+                <span>12</span>
+
+                <span>13</span>
+                <span>14</span>
+                <span>15</span>
+                <span>16</span>
+                <span>17</span>
+                <span>18</span>
+                <span>19</span>
+
+                <span>20</span>
+                <span>21</span>
+                <span>22</span>
+                <span>23</span>
+                <span>24</span>
+                <span>25</span>
+                <span>26</span>
+
+                <span>27</span>
+                <span>28</span>
+                <span>29</span>
+                <span>30</span>
+                <span>31</span>
+                <span></span>
+                <span></span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =======================================================
+         DRESS CODE
+    ======================================================== -->
+
+    <section class="dress">
+
+        <div class="eyebrow">
+            dress code
+        </div>
+
+        <h2 class="dress-title">
+            Дресс-код
+        </h2>
+
+        <p class="dress-text">
+            Нам будет особенно приятно, если ваши образы
+            поддержат спокойную и естественную атмосферу
+            нашего дня.
+        </p>
+
+
+        <div class="dress-icons">
+
+            <div class="dress-icon">
+                ♡
+                <span>Gentlemen</span>
+            </div>
+
+            <div class="dress-icon">
+                ♧
+                <span>Ladies</span>
+            </div>
+
+        </div>
+
+
+        <p class="dress-text">
+            Приглушённые природные оттенки, оливковый,
+            шалфейный, кремовый, шоколадный и бежевый.
+        </p>
+
+
+        <div class="palette">
+            <span class="p1"></span>
+            <span class="p2"></span>
+            <span class="p3"></span>
+            <span class="p4"></span>
+        </div>
+
+    </section>
+
+
+    <!-- =======================================================
+         DETAILS
+    ======================================================== -->
+
+    <section class="details">
+
+        <div class="eyebrow">
+            a little note
+        </div>
+
+        <h2 class="details-title">
+            Детали
+        </h2>
+
+        <div class="details-copy">
+
+            Пожалуйста, подтвердите своё присутствие
+            до 20 сентября, чтобы мы могли заранее
+            подготовить праздник.
+
+            <br><br>
+
+            Если у вас появятся вопросы по мероприятию,
+            вы всегда можете обратиться к нашему
+            организатору Ольге.
+
+        </div>
+
+        <div class="bow">
+            ♡
+        </div>
+
+        <div class="details-copy">
+
+            Праздник проходит в формате 18+.
+            Спасибо, что заранее позаботились о том,
+            с кем останутся ваши дети.
+
+        </div>
+
+    </section>
+
+
+    <!-- =======================================================
+         LOCATION
+    ======================================================== -->
+
+    <section class="location">
+
+        <div class="location-content">
+
+            <div class="eyebrow">
+                location
+            </div>
+
+            <h2 class="location-title">
+                Место торжества
+            </h2>
+
+            <div class="location-name">
+                Усадьба «Белые сады»
+            </div>
+
+            <div class="location-address">
+                Московская область<br>
+                Загородная, 15
+            </div>
+
+            <a
+                href="https://maps.google.com"
+                target="_blank"
+                class="map-button"
+            >
+                Посмотреть на карте
+            </a>
+
+        </div>
+
+
+        <div class="location-photo"></div>
+
+    </section>
+
+
+    <!-- =======================================================
+         RSVP
+    ======================================================== -->
+
+    <section class="rsvp">
+
+        <div class="rsvp-inner">
+
+            <div class="eyebrow">
+                please reply
+            </div>
+
+            <h2 class="rsvp-title">
+                RSVP
+            </h2>
+
+            <div class="rsvp-subtitle">
+                Пожалуйста, дайте нам знать,
+                сможете ли вы разделить с нами
+                этот особенный день.
+            </div>
+
+
+            <form class="form" id="rsvpForm">
+
+                <div class="field">
+
+                    <label for="name">
+                        Ваше имя и фамилия
+                    </label>
+
+                    <input
+                        id="name"
+                        type="text"
+                        placeholder="Введите имя"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="field">
+
+                    <label>
+                        Ваш ответ
+                    </label>
+
+                    <div class="radio-row">
+
+                        <label class="radio">
+
+                            <input
+                                type="radio"
+                                name="attendance"
+                                value="yes"
+                                checked
+                            >
+
+                            <span>
+                                С удовольствием приду
+                            </span>
+
                         </label>
-                        <label class="cursor-pointer">
-                            <input type="radio" name="attendance" value="К сожалению, не смогу" class="peer sr-only">
-                            <div class="p-3.5 text-center rounded-xl bg-white border border-rosegold/30 peer-checked:border-amber-500/50 peer-checked:bg-amber-500/10 peer-checked:text-amber-700 text-sm font-medium transition-all shadow-sm">
-                                <i class="fa-solid fa-xmark mr-2 text-amber-600"></i> Не смогу
-                            </div>
+
+
+                        <label class="radio">
+
+                            <input
+                                type="radio"
+                                name="attendance"
+                                value="no"
+                            >
+
+                            <span>
+                                К сожалению, не смогу
+                            </span>
+
                         </label>
+
                     </div>
+
                 </div>
 
-                <!-- Plus One or Preferences -->
-                <div>
-                    <label class="block text-xs uppercase tracking-wider text-gray-600 mb-2 font-semibold">Пожелания или спутник (опционально)</label>
-                    <div class="relative">
-                        <span class="absolute top-3.5 left-0 flex items-start pl-4 text-gray-400">
-                            <i class="fa-regular fa-comment"></i>
-                        </span>
-                        <textarea id="guestNotes" rows="3" placeholder="Укажите имя спутника или пищевые предпочтения (аллергия и т.д.)..." 
-                            class="w-full bg-white border border-rosegold/30 rounded-xl py-3 pl-11 pr-4 text-gray-800 placeholder-gray-400 focus:outline-none focus:border-rosegold transition-colors text-sm resize-none shadow-sm"></textarea>
-                    </div>
+
+                <div class="field">
+
+                    <label for="comment">
+                        Комментарий
+                    </label>
+
+                    <textarea
+                        id="comment"
+                        rows="3"
+                        placeholder="Пожелания, предпочтения..."
+                    ></textarea>
+
                 </div>
 
-                <!-- Submit Button -->
-                <button type="submit" id="submitBtn" class="w-full rosegold-btn font-semibold py-4 rounded-xl shadow-lg flex items-center justify-center gap-2 text-sm tracking-wide cursor-pointer">
-                    <span id="btnText">Отправить ответ</span>
-                    <i id="btnIcon" class="fa-solid fa-paper-plane"></i>
+
+                <button
+                    type="submit"
+                    class="submit"
+                >
+                    Отправить ответ
                 </button>
+
             </form>
 
-            <!-- Status Notification Box -->
-            <div id="statusMessage" class="hidden mt-6 p-4 rounded-xl text-center text-sm font-medium transition-all max-w-xl mx-auto"></div>
+
+            <div id="formMessage"></div>
+
         </div>
 
-    </main>
+    </section>
 
-    <div id="lightboxModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden items-center justify-center p-4 transition-opacity duration-300" onclick="closeLightbox()">
-        <div class="relative max-w-4xl max-h-[90vh] overflow-hidden rounded-3xl p-2 bg-white/10 border border-white/20" onclick="event.stopPropagation()">
-            <button onclick="closeLightbox()" class="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-black/60 text-white flex items-center justify-center text-lg hover:bg-black transition-colors cursor-pointer">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
-            <img id="lightboxImage" src="" alt="Enlarged gallery photo" class="max-w-full max-h-[80vh] object-contain rounded-2xl mx-auto shadow-2xl">
+
+    <!-- =======================================================
+         FOOTER
+    ======================================================== -->
+
+    <footer>
+
+        <div class="footer-names">
+            Анатолий & Ксения
         </div>
-    </div>
 
-    <footer class="w-full text-center py-8 text-xs text-gray-500 z-10 border-t border-rosegold/20 bg-champagne/40">
-        <p class="font-script text-2xl text-rosegold mb-1">С любовью и трепетом ждем Вас!</p>
-        <p class="font-sans tracking-wide">Анастасия & Александр • 2026</p>
+        <div class="footer-date">
+            03 · 10 · 2025
+        </div>
+
+        <div class="footer-heart">
+            ♡
+        </div>
+
     </footer>
 
-    <script>
-        // Target Event Date for Countdown (October 15, 2026 16:00:00)
-        const eventDate = new Date('2026-10-15T16:00:00').getTime();
+</main>
 
-        function updateCountdown() {
-            const now = new Date().getTime();
-            const distance = eventDate - now;
 
-            if (distance < 0) {
-                document.getElementById('days').innerText = '00';
-                document.getElementById('hours').innerText = '00';
-                document.getElementById('minutes').innerText = '00';
-                return;
-            }
+<script>
 
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    /*
+     * =========================================================
+     * RSVP
+     *
+     * Сейчас форма работает как демонстрация.
+     *
+     * Для реальной отправки:
+     * 1. Создай backend / serverless endpoint.
+     * 2. Передавай туда данные формы через fetch().
+     * 3. Уже на сервере отправляй сообщение в Telegram.
+     *
+     * НЕ помещай Telegram BOT TOKEN сюда.
+     * =========================================================
+     */
 
-            document.getElementById('days').innerText = String(days).padStart(2, '0');
-            document.getElementById('hours').innerText = String(hours).padStart(2, '0');
-            document.getElementById('minutes').innerText = String(minutes).padStart(2, '0');
-        }
+    const form = document.getElementById("rsvpForm");
+    const message = document.getElementById("formMessage");
 
-        setInterval(updateCountdown, 1000);
-        updateCountdown();
+    form.addEventListener("submit", function (event) {
 
-        // Lightbox Functions
-        function openLightbox(imageUrl) {
-            const modal = document.getElementById('lightboxModal');
-            const img = document.getElementById('lightboxImage');
-            img.src = imageUrl;
-            modal.classList.remove('hidden');
-            modal.classList.add('flex');
-            document.body.style.overflow = 'hidden';
-        }
+        event.preventDefault();
 
-        function closeLightbox() {
-            const modal = document.getElementById('lightboxModal');
-            modal.classList.add('hidden');
-            modal.classList.remove('flex');
-            document.body.style.overflow = 'auto';
-        }
+        const name =
+            document.getElementById("name").value.trim();
 
-        // Close lightbox with ESC key
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                closeLightbox();
-            }
+        const attendance =
+            document.querySelector(
+                'input[name="attendance"]:checked'
+            ).value;
+
+        const comment =
+            document.getElementById("comment").value.trim();
+
+
+        console.log({
+            name,
+            attendance,
+            comment
         });
 
-        // Telegram Bot Integration Credentials
-        const BOT_TOKEN = '8622573021:AAHI8nsTrKl4TkQqUlHBC9uEuVQSNTMcnEA';
-        const CHAT_ID = '5324618271';
 
-        const rsvpForm = document.getElementById('rsvpForm');
-        const submitBtn = document.getElementById('submitBtn');
-        const btnText = document.getElementById('btnText');
-        const btnIcon = document.getElementById('btnIcon');
-        const statusMessage = document.getElementById('statusMessage');
+        message.style.display = "block";
 
-        rsvpForm.addEventListener('submit', async function(e) {
-            e.preventDefault();
+        message.textContent =
+            attendance === "yes"
+                ? "Спасибо! Будем ждать вас на нашем празднике ♡"
+                : "Спасибо, что сообщили нам ♡";
 
-            const name = document.getElementById('guestName').value.trim();
-            const attendance = document.querySelector('input[name="attendance"]:checked').value;
-            const rawNotes = document.getElementById('guestNotes').value.trim();
-            const notes = rawNotes ? rawNotes : 'Нет дополнительных пожеланий';
+        form.reset();
 
-            if (!name) return;
+    });
 
-            // UI Loading state
-            submitBtn.disabled = true;
-            btnText.innerText = 'Отправка...';
-            btnIcon.className = 'fa-solid fa-spinner fa-spin';
-            statusMessage.classList.add('hidden');
+</script>
 
-            // Format message for Telegram
-            const textMessage = `💌 *Новый ответ на свадебное приглашение!*\n\n` +
-                                `👤 *Имя гостя:* ${name}\n` +
-                                `📌 *Статус:* ${attendance}\n` +
-                                `💬 *Комментарий:* ${notes}\n\n` +
-                                `🕒 _Отправлено с сайта приглашения_`;
-
-            const telegramUrl = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
-
-            try {
-                const response = await fetch(telegramUrl, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        chat_id: CHAT_ID,
-                        text: textMessage,
-                        parse_mode: 'Markdown'
-                    })
-                });
-
-                const data = await response.json();
-
-                if (data.ok) {
-                    statusMessage.className = 'mt-6 p-4 rounded-xl text-center text-sm font-medium bg-emerald-500/10 border border-emerald-500/30 text-emerald-700 shadow-sm';
-                    statusMessage.innerText = 'Спасибо! Ваш ответ успешно отправлен организаторам. До встречи на празднике! ✨';
-                    statusMessage.classList.remove('hidden');
-                    rsvpForm.reset();
-                } else {
-                    throw new Error(data.description || 'Ошибка отправки');
-                }
-            } catch (error) {
-                console.error('Telegram API Error:', error);
-                statusMessage.className = 'mt-6 p-4 rounded-xl text-center text-sm font-medium bg-red-500/10 border border-red-500/30 text-red-700 shadow-sm';
-                statusMessage.innerText = 'Не удалось отправить сообщение. Пожалуйста, попробуйте еще раз чуть позже.';
-                statusMessage.classList.remove('hidden');
-            } finally {
-                submitBtn.disabled = false;
-                btnText.innerText = 'Отправить ответ';
-                btnIcon.className = 'fa-solid fa-paper-plane';
-            }
-        });
-    </script>
 </body>
 </html>
