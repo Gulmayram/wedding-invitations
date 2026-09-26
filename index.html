@@ -3,25 +3,26 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#f8f5ec">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f3e9">
+  <meta name="description" content="Свадебное приглашение Анатолия и Ксении">
   <title>Анатолий & Ксения — свадебное приглашение</title>
 
-  <!-- Бесплатные шрифты Google Fonts -->
+  <!-- Бесплатные шрифты с Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Manrope:wght@300;400;500&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --cream: #f8f5ec;
+      --cream: #f7f3e9;
       --paper: #fffdf7;
-      --sage: #a6a98c;
-      --sage-light: #c4c6af;
-      --olive: #414b3d;
-      --ink: #38382f;
-      --muted: #858477;
-      --line: #deded0;
+      --olive: #424b3c;
+      --sage: #a6aa8d;
+      --sage-light: #c5c8b3;
+      --brown: #514438;
+      --muted: #858478;
+      --line: #dcdccc;
       --serif: "Cormorant Garamond", Georgia, serif;
       --sans: "Manrope", Arial, sans-serif;
     }
@@ -36,282 +37,426 @@
 
     body {
       margin: 0;
-      background: #e4e5d9;
-      color: var(--ink);
+      color: var(--olive);
+      background: #d4d6c8;
       font-family: var(--sans);
       font-weight: 300;
       -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
 
-    .invitation {
-      width: min(100%, 650px);
-      min-height: 100vh;
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .page {
+      width: min(100%, 720px);
       margin: 0 auto;
       background: var(--cream);
+      box-shadow: 0 0 65px rgba(35, 43, 32, .12);
       overflow: hidden;
-      box-shadow: 0 0 70px rgba(35, 43, 32, .12);
     }
 
     .serif {
       font-family: var(--serif);
     }
 
+    .script {
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 300;
+    }
+
     .eyebrow {
       font-size: 9px;
-      font-weight: 500;
-      letter-spacing: .34em;
+      font-weight: 400;
+      letter-spacing: .38em;
       text-transform: uppercase;
     }
 
-    /* HERO */
-
-    .hero {
-      position: relative;
-      min-height: 700px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 65px 24px 45px;
+    .section {
+      padding: 76px 32px;
       text-align: center;
-      background: var(--olive);
-      color: var(--paper);
+      position: relative;
     }
 
-    .hero-photo {
+    .section-title {
+      margin: 0 0 20px;
+      font-family: var(--serif);
+      font-weight: 300;
+      font-size: clamp(38px, 9vw, 54px);
+      line-height: .98;
+    }
+
+    .section-title .capital {
+      font-size: 1.32em;
+      font-style: italic;
+    }
+
+    .section-copy {
+      max-width: 420px;
+      margin: 0 auto;
+      font-family: var(--serif);
+      font-size: 21px;
+      line-height: 1.38;
+      color: #5d5c51;
+    }
+
+    .ornament {
+      width: 125px;
+      height: 38px;
+      margin: 25px auto;
+      color: var(--sage);
+    }
+
+    .ornament svg {
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+    }
+
+    /* Появление элементов при прокрутке */
+
+    .reveal {
+      opacity: 1;
+      transform: none;
+    }
+
+    .js .reveal {
+      opacity: 0;
+      transform: translateY(38px);
+      transition:
+        opacity .9s ease,
+        transform .9s cubic-bezier(.2, .7, .2, 1);
+    }
+
+    .js .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .js .reveal-left {
+      transform: translateX(-40px);
+    }
+
+    .js .reveal-right {
+      transform: translateX(40px);
+    }
+
+    .js .reveal-left.visible,
+    .js .reveal-right.visible {
+      transform: translateX(0);
+    }
+
+    .js .reveal-scale {
+      transform: scale(.94);
+    }
+
+    .js .reveal-scale.visible {
+      transform: scale(1);
+    }
+
+    .delay-1 { transition-delay: .12s !important; }
+    .delay-2 { transition-delay: .24s !important; }
+    .delay-3 { transition-delay: .36s !important; }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .js .reveal,
+      .js .reveal.visible {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+    }
+
+    /* ОБЛОЖКА */
+
+    .hero {
+      min-height: 850px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      padding: 52px 24px 44px;
+      color: var(--paper);
+      background: var(--olive);
+      text-align: center;
+      isolation: isolate;
+    }
+
+    .hero-image {
       position: absolute;
       inset: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: center;
-      opacity: .38;
-      filter: saturate(.55);
+      object-position: center 48%;
+      z-index: -2;
+      filter: saturate(.72);
     }
 
     .hero::after {
       content: "";
       position: absolute;
       inset: 0;
+      z-index: -1;
       background: linear-gradient(
         180deg,
-        rgba(36, 45, 34, .34),
-        rgba(36, 45, 34, .72)
+        rgba(35, 43, 34, .48) 0%,
+        rgba(35, 43, 34, .12) 45%,
+        rgba(35, 43, 34, .65) 100%
       );
     }
 
-    .hero-content {
+    .hero-top {
       position: relative;
       z-index: 1;
-      width: 100%;
     }
 
-    .hero .eyebrow {
-      margin-bottom: 30px;
-      color: #e4e3d6;
+    .hero-top .eyebrow {
+      line-height: 2;
+      color: #f1eee4;
     }
 
-    .hero h1 {
-      margin: 0;
-      font-size: clamp(54px, 12vw, 94px);
-      line-height: .79;
+    .hero-names {
+      margin: 45px 0 0;
+      font-family: var(--serif);
+      font-size: clamp(53px, 12vw, 91px);
       font-weight: 300;
-      letter-spacing: -.045em;
+      line-height: .78;
+      letter-spacing: -.035em;
       text-transform: uppercase;
     }
 
-    .hero-and {
+    .hero-names span {
       display: block;
-      margin: 13px 0 7px;
-      font-size: .44em;
+    }
+
+    .hero-names .and {
+      margin: 18px 0 14px;
+      font-size: .47em;
       font-style: italic;
-      font-weight: 300;
       text-transform: lowercase;
-      letter-spacing: .02em;
     }
 
     .hero-date {
-      margin-top: 40px;
-      font-size: 10px;
-      letter-spacing: .32em;
-      text-transform: uppercase;
-      color: #e4e3d6;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      margin-top: 33px;
+      font-size: 11px;
+      letter-spacing: .38em;
     }
 
-    .hero-rule {
-      width: 55px;
-      height: 1px;
-      margin: 25px auto 0;
-      background: rgba(255, 255, 255, .6);
-    }
-
-    .hero-caption {
-      margin-top: 22px;
-      font-family: var(--serif);
-      font-size: 20px;
-      font-style: italic;
-      letter-spacing: .03em;
-    }
-
-    /* GENERAL SECTIONS */
-
-    .section {
-      padding: 75px 35px;
-      text-align: center;
-    }
-
-    .section-title {
-      margin: 0 0 20px;
-      font-size: 44px;
-      line-height: .98;
-      font-weight: 400;
-    }
-
-    .section-title .initial {
-      font-size: 1.35em;
-      font-style: italic;
-      font-weight: 300;
-    }
-
-    .section-text {
-      max-width: 390px;
-      margin: 0 auto;
-      font-family: var(--serif);
-      font-size: 20px;
-      line-height: 1.3;
-      color: #5d5b50;
-    }
-
-    /* INTRO */
-
-    .intro {
-      padding-top: 65px;
-      padding-bottom: 75px;
-    }
-
-    .intro .section-title {
-      margin-bottom: 20px;
-    }
-
-    .flourish {
-      display: block;
-      width: 130px;
-      height: 45px;
-      margin: 20px auto;
-      color: var(--sage);
-    }
-
-    .intro-quote {
-      max-width: 420px;
-      margin: 30px auto 0;
-      font-family: var(--serif);
-      font-size: 21px;
-      line-height: 1.35;
-      font-style: italic;
-      color: #67665a;
-    }
-
-    /* PHOTO */
-
-    .couple-photo {
-      padding: 0 34px;
-      background: var(--cream);
-    }
-
-    .photo-frame {
-      position: relative;
-      padding: 9px;
-      border: 1px solid var(--sage);
-    }
-
-    .photo-frame::before {
+    .hero-date::before,
+    .hero-date::after {
       content: "";
-      position: absolute;
-      inset: 4px;
-      border: 1px solid rgba(166, 169, 140, .55);
-      pointer-events: none;
+      width: 34px;
+      height: 1px;
+      background: rgba(255, 255, 255, .65);
     }
 
-    .photo-frame img {
+    .hero-bottom {
+      position: relative;
+      z-index: 1;
+      max-width: 380px;
+      font-family: var(--serif);
+      font-size: 26px;
+      font-style: italic;
+      line-height: 1.1;
+      color: #f3eee4;
+    }
+
+    .hero-bottom span {
       display: block;
+      margin-top: 12px;
+      font-family: var(--sans);
+      font-size: 8px;
+      font-style: normal;
+      letter-spacing: .28em;
+      text-transform: uppercase;
+    }
+
+    /* ПРИВЕТСТВИЕ */
+
+    .welcome {
+      padding-top: 76px;
+      padding-bottom: 64px;
+    }
+
+    .welcome .section-copy {
+      max-width: 440px;
+    }
+
+    .welcome-photo {
       width: 100%;
-      height: 490px;
+      height: 270px;
+      margin-top: 45px;
       object-fit: cover;
       object-position: center;
     }
 
-    .photo-note {
-      margin: 14px 0 0;
+    /* ФОТОИСТОРИЯ */
+
+    .story {
+      padding: 75px 22px 80px;
+    }
+
+    .story-intro {
+      margin-bottom: 38px;
+    }
+
+    .story-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      align-items: start;
+    }
+
+    .story-photo {
+      width: 100%;
+      height: 285px;
+      object-fit: cover;
+      background: #e5e4d9;
+    }
+
+    .story-photo.tall {
+      height: 360px;
+    }
+
+    .story-photo.short {
+      height: 205px;
+    }
+
+    .story-photo.wide {
+      grid-column: 1 / -1;
+      height: 350px;
+    }
+
+    .story-photo.shift {
+      margin-top: 38px;
+    }
+
+    .story-caption {
+      margin: 12px 0 20px;
       font-family: var(--serif);
-      font-size: 13px;
+      font-size: 17px;
       font-style: italic;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    /* ЦИТАТА НА ФОТО */
+
+    .quote-photo {
+      position: relative;
+      height: 390px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 30px;
+      background: var(--olive);
+      color: white;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .quote-photo img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: saturate(.45);
+      opacity: .5;
+    }
+
+    .quote-photo::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(32, 40, 31, .35);
+    }
+
+    .quote-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 390px;
+      font-family: var(--serif);
+      font-size: 30px;
+      font-style: italic;
+      line-height: 1.18;
+    }
+
+    .quote-inner small {
+      display: block;
+      margin-top: 24px;
+      font-family: var(--sans);
+      font-size: 9px;
+      font-style: normal;
+      letter-spacing: .28em;
+      text-transform: uppercase;
+    }
+
+    /* ДАТА И КАЛЕНДАРЬ */
+
+    .date-section {
+      background: var(--paper);
+      padding-top: 75px;
+      padding-bottom: 80px;
+    }
+
+    .date-section .eyebrow {
+      margin-bottom: 15px;
       color: var(--muted);
     }
 
-    /* DATE */
-
-    .date-section {
-      position: relative;
-      padding-top: 68px;
-      padding-bottom: 70px;
-      background: var(--paper);
-    }
-
-    .date-section .section-title {
-      font-size: 48px;
-    }
-
-    .date-number {
-      margin: 22px 0 8px;
+    .big-date {
+      margin: 16px 0 0;
       font-family: var(--serif);
-      font-size: 76px;
-      line-height: 1;
+      font-size: 110px;
       font-weight: 300;
-      letter-spacing: -.04em;
+      line-height: .85;
       color: var(--olive);
     }
 
-    .date-month {
+    .big-month {
+      margin-top: 7px;
       font-family: var(--serif);
-      font-size: 28px;
+      font-size: 42px;
       font-style: italic;
       color: var(--sage);
     }
 
     .date-year {
-      margin-top: 9px;
-      font-size: 10px;
-      letter-spacing: .36em;
-      color: var(--muted);
+      margin-top: 10px;
+      font-size: 11px;
+      letter-spacing: .35em;
     }
 
-    .date-divider {
-      width: 45px;
-      height: 1px;
-      margin: 28px auto;
-      background: var(--sage);
-    }
-
-    .date-message {
-      max-width: 350px;
-      margin: 0 auto;
+    .date-note {
+      max-width: 330px;
+      margin: 32px auto;
       font-family: var(--serif);
       font-size: 20px;
-      line-height: 1.35;
+      line-height: 1.4;
     }
-
-    /* CALENDAR */
 
     .calendar {
-      max-width: 330px;
-      margin: 42px auto 0;
+      max-width: 350px;
+      margin: 38px auto 0;
     }
 
-    .calendar-heading {
-      margin-bottom: 20px;
+    .calendar-title {
+      margin-bottom: 19px;
       font-family: var(--serif);
-      font-size: 26px;
-      letter-spacing: .08em;
+      font-size: 27px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
     }
 
     .calendar-grid {
@@ -321,16 +466,15 @@
     }
 
     .calendar-grid span {
+      aspect-ratio: 1;
       display: flex;
       align-items: center;
       justify-content: center;
-      aspect-ratio: 1;
       font-family: var(--serif);
       font-size: 17px;
-      color: #56574b;
     }
 
-    .calendar-grid .weekday {
+    .calendar-grid .day-name {
       font-family: var(--sans);
       font-size: 9px;
       font-weight: 500;
@@ -338,676 +482,792 @@
     }
 
     .calendar-grid .faded {
-      color: #c6c6b9;
+      color: #c9c9bd;
     }
 
-    .calendar-grid .wedding-day {
-      position: relative;
+    .calendar-grid .marked {
       border-radius: 50%;
-      background: var(--sage);
+      background: var(--olive);
       color: white;
-      font-weight: 600;
+      position: relative;
     }
 
-    .calendar-grid .wedding-day::after {
+    .calendar-grid .marked::after {
       content: "♥";
       position: absolute;
-      bottom: -3px;
-      font-size: 8px;
+      bottom: 0;
+      font-size: 7px;
       color: white;
     }
 
-    /* TIMELINE */
-
-    .timeline-section {
-      padding: 70px 30px 75px;
-      background: var(--sage);
-      color: var(--paper);
+    .date-detail-photo {
+      width: 100%;
+      height: 280px;
+      margin-top: 50px;
+      object-fit: cover;
     }
 
-    .timeline-section .section-title {
-      color: var(--paper);
+    /* ПРОГРАММА */
+
+    .program {
+      background: var(--cream);
+      padding-top: 76px;
+      padding-bottom: 80px;
     }
 
-    .timeline-intro {
-      max-width: 340px;
-      margin: 0 auto 42px;
+    .program-intro {
+      margin-bottom: 42px;
       font-family: var(--serif);
       font-size: 20px;
       font-style: italic;
-      line-height: 1.3;
-      color: rgba(255, 253, 247, .9);
+      color: var(--muted);
     }
 
     .timeline {
-      max-width: 370px;
+      max-width: 440px;
       margin: 0 auto;
       text-align: left;
     }
 
     .timeline-item {
-      position: relative;
       display: grid;
-      grid-template-columns: 72px 1fr;
-      gap: 20px;
-      min-height: 82px;
-      padding-bottom: 20px;
+      grid-template-columns: 68px 20px 1fr;
+      gap: 12px;
+      min-height: 92px;
+      position: relative;
     }
 
-    .timeline-item:not(:last-child)::before {
+    .timeline-item:not(:last-child)::after {
       content: "";
       position: absolute;
-      left: 35px;
-      top: 39px;
-      bottom: 0;
+      left: 77px;
+      top: 21px;
+      bottom: -1px;
       width: 1px;
-      background: rgba(255, 255, 255, .5);
+      background: var(--sage-light);
     }
 
-    .timeline-time {
+    .time {
       font-family: var(--serif);
-      font-size: 24px;
-      line-height: 1;
-      text-align: center;
+      font-size: 23px;
+      color: var(--olive);
     }
 
     .timeline-dot {
-      display: block;
-      width: 9px;
-      height: 9px;
-      margin: 12px auto 0;
-      border: 1px solid var(--paper);
+      position: relative;
+      z-index: 1;
+      width: 8px;
+      height: 8px;
+      margin: 8px auto 0;
       border-radius: 50%;
+      background: var(--olive);
     }
 
-    .timeline-description {
-      padding-top: 1px;
-    }
-
-    .timeline-description h3 {
-      margin: 0 0 5px;
+    .event h3 {
+      margin: 0 0 6px;
       font-family: var(--serif);
-      font-size: 24px;
+      font-size: 25px;
       font-weight: 400;
     }
 
-    .timeline-description p {
+    .event p {
       margin: 0;
       font-size: 11px;
-      line-height: 1.6;
-      color: rgba(255, 253, 247, .82);
+      line-height: 1.65;
+      color: var(--muted);
     }
 
-    /* DRESS CODE */
+    .program-photo-strip {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 40px;
+    }
 
-    .dress-section {
-      background: var(--paper);
+    .program-photo-strip img {
+      width: 100%;
+      height: 170px;
+      object-fit: cover;
+    }
+
+    /* ДРЕСС-КОД */
+
+    .dress {
       padding-top: 75px;
       padding-bottom: 75px;
+      background: var(--paper);
     }
 
-    .dress-section .section-title {
-      margin-bottom: 18px;
-    }
-
-    .dress-text {
-      max-width: 380px;
+    .dress-copy {
+      max-width: 400px;
       margin: 0 auto;
       font-family: var(--serif);
-      font-size: 20px;
-      line-height: 1.35;
+      font-size: 21px;
+      line-height: 1.4;
     }
 
-    .dress-icons {
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      margin: 34px auto 32px;
+    .dress-pictures {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin: 35px auto 28px;
     }
 
-    .dress-icon {
-      display: flex;
-      width: 94px;
-      height: 94px;
-      align-items: center;
-      justify-content: center;
-      border: 1px solid var(--olive);
-      border-radius: 50%;
-    }
-
-    .dress-icon svg {
-      width: 46px;
-      height: 62px;
-      fill: var(--olive);
+    .dress-pictures img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
     }
 
     .palette {
       display: flex;
       justify-content: center;
       gap: 9px;
-      max-width: 380px;
-      margin: 0 auto;
+      margin: 30px auto 18px;
     }
 
     .swatch {
-      flex: 1;
-      height: 23px;
-      border: 1px solid rgba(0, 0, 0, .04);
+      width: 48px;
+      height: 22px;
     }
 
-    .dress-note {
-      margin-top: 24px;
+    .dress-small {
       font-family: var(--serif);
       font-size: 17px;
       font-style: italic;
       color: var(--muted);
     }
 
-    /* LOCATION */
+    /* МЕСТО */
 
-    .location-section {
-      padding: 75px 30px;
+    .venue {
+      padding: 75px 22px;
       background: var(--cream);
     }
 
-    .location-section .section-title {
-      margin-bottom: 20px;
+    .venue-photo {
+      width: 100%;
+      height: 330px;
+      object-fit: cover;
+      margin-top: 28px;
     }
 
-    .location-card {
-      max-width: 440px;
-      margin: 0 auto;
-      padding: 25px 20px;
-      border: 1px solid var(--sage);
-      background: var(--paper);
-    }
-
-    .location-name {
-      margin: 0 0 9px;
+    .venue-name {
+      margin: 23px 0 8px;
       font-family: var(--serif);
-      font-size: 29px;
+      font-size: 32px;
       font-weight: 400;
     }
 
-    .location-address {
+    .venue-address {
       font-size: 11px;
       line-height: 1.8;
-      letter-spacing: .03em;
       color: var(--muted);
     }
 
-    .location-photo {
-      display: block;
-      width: 100%;
-      height: 235px;
+    .venue-mini-gallery {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
       margin-top: 22px;
+    }
+
+    .venue-mini-gallery img {
+      width: 100%;
+      height: 190px;
       object-fit: cover;
     }
 
-    /* WISHES */
+    /* ПОЖЕЛАНИЯ */
 
-    .wishes-section {
-      padding-top: 65px;
+    .wishes {
+      padding-top: 70px;
       padding-bottom: 70px;
       background: var(--paper);
     }
 
-    .wishes-section .section-text {
-      max-width: 420px;
+    .wishes-photo {
+      width: 100%;
+      height: 270px;
+      object-fit: cover;
+      margin: 35px 0;
     }
 
-    .wishes-note {
+    .wishes-copy {
       max-width: 410px;
-      margin: 25px auto 0;
+      margin: 0 auto;
       font-family: var(--serif);
-      font-size: 18px;
+      font-size: 21px;
       line-height: 1.4;
-      font-style: italic;
-      color: var(--muted);
     }
 
-    /* FOOTER */
+    /* ФИНАЛЬНЫЙ КАДР */
 
-    .footer {
+    .ending {
       position: relative;
-      padding: 60px 25px 48px;
+      min-height: 460px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: center;
+      padding: 45px 25px;
+      color: white;
       text-align: center;
       background: var(--olive);
-      color: var(--paper);
+      overflow: hidden;
+      isolation: isolate;
     }
 
-    .footer .flourish {
-      color: #d2d3bf;
-      margin-top: 0;
-      margin-bottom: 18px;
+    .ending img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -2;
     }
 
-    .footer-names {
+    .ending::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: linear-gradient(
+        180deg,
+        rgba(30, 38, 30, .04),
+        rgba(30, 38, 30, .65)
+      );
+    }
+
+    .ending-script {
+      margin: 0 0 8px;
+      font-family: var(--serif);
+      font-size: 30px;
+      font-style: italic;
+    }
+
+    .ending-names {
       margin: 0;
       font-family: var(--serif);
-      font-size: 37px;
+      font-size: clamp(32px, 8vw, 48px);
       font-weight: 300;
+      letter-spacing: .02em;
     }
 
-    .footer-date {
+    .ending-date {
       margin-top: 12px;
-      font-size: 9px;
+      font-size: 10px;
       letter-spacing: .3em;
-      color: #deded0;
     }
 
-    .footer-thanks {
-      margin-top: 26px;
+    .ending-thanks {
+      margin: 25px 0 0;
       font-family: var(--serif);
       font-size: 19px;
       font-style: italic;
-      color: #d9d9ca;
     }
 
-    @media (min-width: 700px) {
-      .invitation {
-        margin: 35px auto;
-      }
+    /* МОБИЛЬНАЯ ВЕРСИЯ */
 
-      .hero {
-        min-height: 750px;
-      }
-    }
-
-    @media (max-width: 420px) {
+    @media (max-width: 480px) {
       .section {
         padding-left: 24px;
         padding-right: 24px;
       }
 
       .hero {
-        min-height: 610px;
+        min-height: 720px;
       }
 
-      .photo-frame img {
-        height: 410px;
+      .story {
+        padding-left: 15px;
+        padding-right: 15px;
       }
 
-      .timeline-item {
-        grid-template-columns: 60px 1fr;
-        gap: 14px;
+      .story-photo {
+        height: 235px;
       }
 
-      .timeline-item:not(:last-child)::before {
-        left: 29px;
+      .story-photo.tall {
+        height: 300px;
       }
 
-      .dress-icons {
-        gap: 18px;
+      .story-photo.short {
+        height: 160px;
       }
 
-      .dress-icon {
-        width: 82px;
-        height: 82px;
-      }
-    }
-
-    @media (prefers-reduced-motion: no-preference) {
-      .hero-content,
-      .section {
-        animation: appear .8s ease both;
+      .story-photo.wide {
+        height: 260px;
       }
 
-      @keyframes appear {
-        from { opacity: 0; transform: translateY(12px); }
-        to { opacity: 1; transform: translateY(0); }
+      .quote-photo {
+        height: 320px;
+      }
+
+      .dress-pictures img {
+        height: 130px;
+      }
+
+      .venue-photo {
+        height: 270px;
+      }
+
+      .venue-mini-gallery img {
+        height: 145px;
       }
     }
   </style>
 </head>
 
 <body>
-  <main class="invitation">
+  <main class="page">
 
-    <!-- HERO: замените имена, дату и подпись -->
+    <!-- ОБЛОЖКА -->
     <header class="hero">
-      <!-- Фото цветов с Unsplash, не содержит узнаваемых людей -->
       <img
-        class="hero-photo"
-        src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=1400&q=85"
-        alt=""
+        class="hero-image"
+        src="images/01-cover.jpg"
+        alt="Молодожёны"
         fetchpriority="high"
       >
 
-      <div class="hero-content">
-        <p class="eyebrow">Приглашение на свадьбу</p>
+      <div class="hero-top reveal">
+        <div class="eyebrow">
+          Приглашение<br>на свадьбу
+        </div>
 
-        <h1 class="serif">
-          Анатолий
-          <span class="hero-and">и</span>
-          Ксения
+        <h1 class="hero-names">
+          <span>Анатолий</span>
+          <span class="and">и</span>
+          <span>Ксения</span>
         </h1>
 
-        <div class="hero-rule"></div>
-        <p class="hero-date">03 октября 2026</p>
-        <p class="hero-caption">День, когда начинается наше навсегда</p>
+        <div class="hero-date">03 · 10 · 2026</div>
+      </div>
+
+      <div class="hero-bottom reveal delay-2">
+        День, когда начинается
+        наше навсегда
+        <span>Будем счастливы видеть вас рядом</span>
       </div>
     </header>
 
     <!-- ПРИВЕТСТВИЕ -->
-    <section class="section intro">
-      <h2 class="section-title serif">
-        <span class="initial">Д</span>орогие гости!
-      </h2>
+    <section class="section welcome">
+      <div class="reveal">
+        <h2 class="section-title">
+          <span class="capital">Д</span>орогие гости!
+        </h2>
 
-      <p class="section-text">
-        Есть дни, которые навсегда остаются в сердце.
-        Мы будем счастливы разделить с вами один из
-        самых важных дней нашей жизни.
-      </p>
+        <p class="section-copy">
+          Мы будем счастливы разделить с вами
+          один из самых важных дней нашей жизни.
+          В этот особенный день мы скажем друг
+          другу «Да» и соединим наши сердца
+          и судьбы в окружении самых близких
+          и родных людей.
+        </p>
+      </div>
 
-      <!-- Оригинальный декоративный орнамент -->
-      <svg class="flourish" viewBox="0 0 150 50"
-           fill="none" xmlns="http://www.w3.org/2000/svg"
-           aria-hidden="true">
-        <path d="M5 25 C28 25 27 6 48 12
-                 C64 16 59 34 75 25
-                 C91 16 86 34 102 12
-                 C123 6 122 25 145 25"
-              stroke="currentColor" stroke-width=".9"/>
-        <path d="M58 25 C64 19 68 19 75 25
-                 C82 19 86 19 92 25
-                 C86 31 82 31 75 25
-                 C68 31 64 31 58 25Z"
-              stroke="currentColor" stroke-width=".9"/>
-        <circle cx="5" cy="25" r="2" stroke="currentColor"/>
-        <circle cx="145" cy="25" r="2" stroke="currentColor"/>
-      </svg>
-
-      <p class="intro-quote">
-        «Самое прекрасное в жизни — это моменты,
-        которые мы разделяем с любимыми людьми».
-      </p>
+      <img
+        class="welcome-photo reveal reveal-scale"
+        src="images/02-welcome.jpg"
+        alt="Романтическое фото пары"
+        loading="lazy"
+      >
     </section>
 
-    <!-- ФОТО МОЛОДОЖЁНОВ -->
-    <section class="couple-photo">
-      <div class="photo-frame">
-        <!-- Замените фотографию на снимок пары с разрешением -->
-        <img
-          src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=85"
-          alt="Романтичная свадебная композиция"
-          loading="lazy"
-        >
+    <!-- ИСТОРИЯ ПАРЫ -->
+    <section class="section story">
+      <div class="story-intro reveal">
+        <h2 class="section-title">
+          <span class="capital">Н</span>аша история
+        </h2>
+        <p class="section-copy">
+          Всё самое красивое начинается
+          с маленьких мгновений.
+        </p>
       </div>
-      <p class="photo-note">С любовью, Анатолий и Ксения</p>
+
+      <div class="story-grid">
+        <div class="reveal reveal-left">
+          <img
+            class="story-photo tall"
+            src="images/03-story-1.jpg"
+            alt="Совместный портрет"
+            loading="lazy"
+          >
+          <p class="story-caption">Когда всё только начиналось</p>
+        </div>
+
+        <div class="reveal reveal-right delay-1">
+          <img
+            class="story-photo tall"
+            src="images/04-story-2.jpg"
+            alt="Романтический портрет пары"
+            loading="lazy"
+          >
+          <p class="story-caption">И каждый день стал особенным</p>
+        </div>
+
+        <div class="reveal reveal-scale">
+          <img
+            class="story-photo wide"
+            src="images/05-story-3.jpg"
+            alt="Прогулка вдвоём"
+            loading="lazy"
+          >
+          <p class="story-caption">Наши любимые моменты</p>
+        </div>
+
+        <div class="reveal reveal-left">
+          <img
+            class="story-photo short"
+            src="images/06-story-4.jpg"
+            alt="Фотография пары"
+            loading="lazy"
+          >
+        </div>
+
+        <div class="reveal reveal-right delay-1">
+          <img
+            class="story-photo short"
+            src="images/07-story-5.jpg"
+            alt="Фотография пары"
+            loading="lazy"
+          >
+        </div>
+
+        <div class="reveal reveal-scale">
+          <img
+            class="story-photo wide"
+            src="images/08-story-6.jpg"
+            alt="Портрет молодожёнов"
+            loading="lazy"
+          >
+          <p class="story-caption">
+            И впереди у нас целая жизнь
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ФОТОГРАФИЯ С ЦИТАТОЙ -->
+    <section class="quote-photo">
+      <img
+        src="images/09-quote.jpg"
+        alt=""
+        loading="lazy"
+      >
+      <div class="quote-inner reveal">
+        «Самое прекрасное в жизни —
+        это моменты, которые мы
+        разделяем с любимыми людьми»
+        <small>Анатолий & Ксения</small>
+      </div>
     </section>
 
     <!-- ДАТА -->
     <section class="section date-section">
-      <h2 class="section-title serif">
-        <span class="initial">Д</span>ата
-      </h2>
+      <div class="reveal">
+        <p class="eyebrow">Дата нашей свадьбы</p>
+        <h2 class="big-date">03</h2>
+        <div class="big-month">октября</div>
+        <div class="date-year">2026</div>
+        <div class="ornament">
+          <svg viewBox="0 0 150 40" fill="none"
+               xmlns="http://www.w3.org/2000/svg">
+            <path d="M8 20H60 M90 20H142"
+                  stroke="currentColor" stroke-width=".8"/>
+            <path d="M65 20 C70 12 80 12 85 20
+                     C80 28 70 28 65 20Z"
+                  stroke="currentColor"/>
+            <path d="M75 13V27" stroke="currentColor"/>
+          </svg>
+        </div>
 
-      <p class="date-number">03</p>
-      <p class="date-month">октября</p>
-      <p class="date-year">2026</p>
+        <p class="date-note">
+          Суббота — прекрасный повод
+          провести этот день вместе с нами.
+        </p>
+      </div>
 
-      <div class="date-divider"></div>
-
-      <p class="date-message">
-        Суббота — прекрасный повод провести
-        этот день вместе с нами.
-      </p>
-
-      <!-- Календарь октября 2026 -->
-      <div class="calendar">
-        <div class="calendar-heading">Октябрь 2026</div>
+      <div class="calendar reveal delay-1">
+        <div class="calendar-title">Октябрь 2026</div>
         <div class="calendar-grid">
-          <span class="weekday">Пн</span>
-          <span class="weekday">Вт</span>
-          <span class="weekday">Ср</span>
-          <span class="weekday">Чт</span>
-          <span class="weekday">Пт</span>
-          <span class="weekday">Сб</span>
-          <span class="weekday">Вс</span>
+          <span class="day-name">Пн</span>
+          <span class="day-name">Вт</span>
+          <span class="day-name">Ср</span>
+          <span class="day-name">Чт</span>
+          <span class="day-name">Пт</span>
+          <span class="day-name">Сб</span>
+          <span class="day-name">Вс</span>
 
           <span class="faded">28</span>
           <span class="faded">29</span>
           <span class="faded">30</span>
           <span>1</span>
           <span>2</span>
-          <span class="wedding-day">3</span>
+          <span class="marked">3</span>
           <span>4</span>
 
-          <span>5</span>
-          <span>6</span>
-          <span>7</span>
-          <span>8</span>
-          <span>9</span>
-          <span>10</span>
-          <span>11</span>
+          <span>5</span><span>6</span><span>7</span>
+          <span>8</span><span>9</span><span>10</span><span>11</span>
 
-          <span>12</span>
-          <span>13</span>
-          <span>14</span>
-          <span>15</span>
-          <span>16</span>
-          <span>17</span>
-          <span>18</span>
+          <span>12</span><span>13</span><span>14</span>
+          <span>15</span><span>16</span><span>17</span><span>18</span>
 
-          <span>19</span>
-          <span>20</span>
-          <span>21</span>
-          <span>22</span>
-          <span>23</span>
-          <span>24</span>
-          <span>25</span>
+          <span>19</span><span>20</span><span>21</span>
+          <span>22</span><span>23</span><span>24</span><span>25</span>
 
-          <span>26</span>
-          <span>27</span>
-          <span>28</span>
-          <span>29</span>
-          <span>30</span>
-          <span>31</span>
+          <span>26</span><span>27</span><span>28</span>
+          <span>29</span><span>30</span><span>31</span>
           <span class="faded">1</span>
         </div>
       </div>
+
+      <img
+        class="date-detail-photo reveal reveal-scale"
+        src="images/10-details.jpg"
+        alt="Свадебные детали"
+        loading="lazy"
+      >
     </section>
 
-    <!-- ПРОГРАММА ДНЯ -->
-    <section class="section timeline-section">
-      <h2 class="section-title serif">
-        <span class="initial">П</span>рограмма дня
-      </h2>
-
-      <p class="timeline-intro">
-        С любовью приглашаем вас провести
-        этот день вместе с нами.
-      </p>
+    <!-- ПРОГРАММА -->
+    <section class="section program">
+      <div class="reveal">
+        <h2 class="section-title">
+          <span class="capital">П</span>рограмма дня
+        </h2>
+        <p class="program-intro">
+          Как пройдёт наш особенный день
+        </p>
+      </div>
 
       <div class="timeline">
-        <div class="timeline-item">
-          <div>
-            <div class="timeline-time">15:00</div>
-            <span class="timeline-dot"></span>
-          </div>
-          <div class="timeline-description">
+        <div class="timeline-item reveal">
+          <div class="time">15:00</div>
+          <div class="timeline-dot"></div>
+          <div class="event">
             <h3>Сбор гостей</h3>
             <p>Встречаемся, обнимаемся и настраиваемся на праздник.</p>
           </div>
         </div>
 
-        <div class="timeline-item">
-          <div>
-            <div class="timeline-time">16:00</div>
-            <span class="timeline-dot"></span>
-          </div>
-          <div class="timeline-description">
+        <div class="timeline-item reveal delay-1">
+          <div class="time">16:00</div>
+          <div class="timeline-dot"></div>
+          <div class="event">
             <h3>Церемония</h3>
             <p>Момент, когда две истории становятся одной.</p>
           </div>
         </div>
 
-        <div class="timeline-item">
-          <div>
-            <div class="timeline-time">17:00</div>
-            <span class="timeline-dot"></span>
-          </div>
-          <div class="timeline-description">
+        <div class="timeline-item reveal">
+          <div class="time">17:00</div>
+          <div class="timeline-dot"></div>
+          <div class="event">
             <h3>Праздничный ужин</h3>
             <p>Вкусные блюда, тёплые слова и радостные встречи.</p>
           </div>
         </div>
 
-        <div class="timeline-item">
-          <div>
-            <div class="timeline-time">19:00</div>
-            <span class="timeline-dot"></span>
-          </div>
-          <div class="timeline-description">
+        <div class="timeline-item reveal delay-1">
+          <div class="time">19:00</div>
+          <div class="timeline-dot"></div>
+          <div class="event">
             <h3>Танцы и веселье</h3>
             <p>Пусть этот вечер запомнится надолго.</p>
           </div>
         </div>
 
-        <div class="timeline-item">
-          <div>
-            <div class="timeline-time">22:30</div>
-            <span class="timeline-dot"></span>
-          </div>
-          <div class="timeline-description">
+        <div class="timeline-item reveal">
+          <div class="time">22:30</div>
+          <div class="timeline-dot"></div>
+          <div class="event">
             <h3>Завершение вечера</h3>
             <p>До новых тёплых встреч!</p>
           </div>
         </div>
       </div>
-    </section>
 
-    <!-- ДРЕСС-КОД -->
-    <section class="section dress-section">
-      <h2 class="section-title serif">
-        <span class="initial">Д</span>ресс-код
-      </h2>
-
-      <p class="dress-text">
-        Нам будет особенно приятно, если ваши
-        образы поддержат нежную атмосферу нашего дня.
-      </p>
-
-      <div class="dress-icons">
-        <!-- Собственные SVG-иконки -->
-        <div class="dress-icon">
-          <svg viewBox="0 0 60 80" xmlns="http://www.w3.org/2000/svg"
-               aria-label="Силуэт костюма">
-            <path d="M15 7 25 2 30 9 35 2 45 7
-                     56 23 48 30 44 23 44 73
-                     16 73 16 23 12 30 4 23Z"/>
-            <path d="M25 2 30 9 35 2 33 17 30 24 27 17Z"
-                  fill="#f8f5ec"/>
-            <path d="M30 24 26 38 30 43 34 38Z"
-                  fill="#f8f5ec"/>
-          </svg>
-        </div>
-
-        <div class="dress-icon">
-          <svg viewBox="0 0 60 80" xmlns="http://www.w3.org/2000/svg"
-               aria-label="Силуэт платья">
-            <path d="M23 3 37 3 40 16 35 24
-                     40 33 54 72 6 72
-                     20 33 25 24 20 16Z"/>
-            <path d="M25 24 30 29 35 24 40 33
-                     30 45 20 33Z" fill="#f8f5ec"/>
-          </svg>
-        </div>
-      </div>
-
-      <div class="palette" aria-label="Цветовая палитра">
-        <span class="swatch" style="background:#a6a98c"></span>
-        <span class="swatch" style="background:#59634d"></span>
-        <span class="swatch" style="background:#4b3d32"></span>
-        <span class="swatch" style="background:#8a786b"></span>
-      </div>
-
-      <p class="dress-note">
-        Оливковые, природные и глубокие оттенки
-        будут гармонично смотреться на фотографиях.
-      </p>
-    </section>
-
-    <!-- МЕСТО ПРОВЕДЕНИЯ -->
-    <section class="section location-section">
-      <h2 class="section-title serif">
-        <span class="initial">М</span>есто торжества
-      </h2>
-
-      <div class="location-card">
-        <h3 class="location-name">Белые сады</h3>
-        <p class="location-address">
-          Московская область<br>
-          [Укажите точный адрес]
-        </p>
-
-        <!-- Фотографию замените на фото настоящего места -->
+      <div class="program-photo-strip">
         <img
-          class="location-photo"
-          src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=1000&q=85"
-          alt="Празднично оформленный свадебный зал"
+          class="reveal reveal-left"
+          src="images/11-program-1.jpg"
+          alt="Свадебный банкет"
+          loading="lazy"
+        >
+        <img
+          class="reveal reveal-right delay-1"
+          src="images/12-program-2.jpg"
+          alt="Свадебный декор"
           loading="lazy"
         >
       </div>
     </section>
 
-    <!-- ПОЖЕЛАНИЯ ГОСТЯМ -->
-    <section class="section wishes-section">
-      <h2 class="section-title serif">
-        <span class="initial">П</span>ожелания
-      </h2>
+    <!-- ДРЕСС-КОД -->
+    <section class="section dress">
+      <div class="reveal">
+        <h2 class="section-title">
+          <span class="capital">Д</span>ресс-код
+        </h2>
+        <p class="dress-copy">
+          Нам будет особенно приятно,
+          если ваши образы поддержат
+          атмосферу нашего дня.
+        </p>
+      </div>
 
-      <p class="section-text">
-        Ваше присутствие — самый ценный подарок
-        для нас. Если вы захотите дополнить его,
-        будем рады вашему вниманию и тёплым словам.
+      <div class="dress-pictures">
+        <img
+          class="reveal reveal-left"
+          src="images/13-dress-1.jpg"
+          alt="Пример образа для гостей"
+          loading="lazy"
+        >
+        <img
+          class="reveal reveal-scale delay-1"
+          src="images/14-dress-2.jpg"
+          alt="Пример свадебного образа"
+          loading="lazy"
+        >
+        <img
+          class="reveal reveal-right delay-2"
+          src="images/15-dress-3.jpg"
+          alt="Пример цветовой гаммы"
+          loading="lazy"
+        >
+      </div>
+
+      <div class="palette reveal">
+        <span class="swatch" style="background:#a6aa8d"></span>
+        <span class="swatch" style="background:#59634d"></span>
+        <span class="swatch" style="background:#b7a18b"></span>
+        <span class="swatch" style="background:#514438"></span>
+      </div>
+
+      <p class="dress-small reveal">
+        Природные, оливковые и глубокие оттенки
       </p>
+    </section>
 
-      <svg class="flourish" viewBox="0 0 150 50"
-           fill="none" xmlns="http://www.w3.org/2000/svg"
-           aria-hidden="true">
-        <path d="M5 25 C28 25 27 6 48 12
-                 C64 16 59 34 75 25
-                 C91 16 86 34 102 12
-                 C123 6 122 25 145 25"
-              stroke="currentColor" stroke-width=".9"/>
-        <path d="M58 25 C64 19 68 19 75 25
-                 C82 19 86 19 92 25
-                 C86 31 82 31 75 25
-                 C68 31 64 31 58 25Z"
-              stroke="currentColor" stroke-width=".9"/>
-      </svg>
+    <!-- МЕСТО ПРОВЕДЕНИЯ -->
+    <section class="section venue">
+      <div class="reveal">
+        <h2 class="section-title">
+          <span class="capital">М</span>есто торжества
+        </h2>
+      </div>
 
-      <p class="wishes-note">
-        Будем рады видеть вас в этот особенный день.
-        Спасибо, что вы есть в нашей жизни!
+      <img
+        class="venue-photo reveal reveal-scale"
+        src="images/16-venue.jpg"
+        alt="Место проведения свадьбы"
+        loading="lazy"
+      >
+
+      <div class="reveal">
+        <h3 class="venue-name">Белые сады</h3>
+        <p class="venue-address">
+          Московская область<br>
+          [Укажите точный адрес]
+        </p>
+      </div>
+
+      <div class="venue-mini-gallery">
+        <img
+          class="reveal reveal-left"
+          src="images/17-venue-1.jpg"
+          alt="Свадебный зал"
+          loading="lazy"
+        >
+        <img
+          class="reveal reveal-right delay-1"
+          src="images/18-venue-2.jpg"
+          alt="Свадебный стол"
+          loading="lazy"
+        >
+      </div>
+    </section>
+
+    <!-- ПОЖЕЛАНИЯ -->
+    <section class="section wishes">
+      <div class="reveal">
+        <h2 class="section-title">
+          <span class="capital">П</span>ожелания
+        </h2>
+        <p class="wishes-copy">
+          Ваше присутствие — самый ценный
+          подарок для нас. Если захотите
+          дополнить его, будем рады вашему
+          вниманию и тёплым словам.
+        </p>
+      </div>
+
+      <img
+        class="wishes-photo reveal reveal-scale"
+        src="images/19-wishes.jpg"
+        alt="Свадебные цветы и детали"
+        loading="lazy"
+      >
+
+      <p class="section-copy reveal">
+        Спасибо, что вы есть в нашей жизни.
+        До встречи на празднике!
       </p>
     </section>
 
     <!-- ФИНАЛ -->
-    <footer class="footer">
-      <svg class="flourish" viewBox="0 0 150 50"
-           fill="none" xmlns="http://www.w3.org/2000/svg"
-           aria-hidden="true">
-        <path d="M5 25 C28 25 27 6 48 12
-                 C64 16 59 34 75 25
-                 C91 16 86 34 102 12
-                 C123 6 122 25 145 25"
-              stroke="currentColor" stroke-width=".9"/>
-        <path d="M58 25 C64 19 68 19 75 25
-                 C82 19 86 19 92 25
-                 C86 31 82 31 75 25
-                 C68 31 64 31 58 25Z"
-              stroke="currentColor" stroke-width=".9"/>
-      </svg>
+    <footer class="ending">
+      <img
+        src="images/20-ending.jpg"
+        alt=""
+        loading="lazy"
+      >
 
-      <p class="footer-names">Анатолий & Ксения</p>
-      <p class="footer-date">03 · 10 · 2026</p>
-      <p class="footer-thanks">С любовью и нежностью</p>
+      <div class="reveal">
+        <p class="ending-script">С любовью</p>
+        <h2 class="ending-names">Анатолий & Ксения</h2>
+        <p class="ending-date">03 · 10 · 2026</p>
+        <p class="ending-thanks">
+          Будем ждать вас!
+        </p>
+      </div>
     </footer>
 
   </main>
+
+  <script>
+    // Включаем анимацию только если JavaScript доступен.
+    document.documentElement.classList.add("js");
+
+    // Появление блоков при прокрутке.
+    const revealElements = document.querySelectorAll(".reveal");
+
+    if ("IntersectionObserver" in window) {
+      const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            obs.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.12,
+        rootMargin: "0px 0px -35px 0px"
+      });
+
+      revealElements.forEach(element => {
+        observer.observe(element);
+      });
+    } else {
+      revealElements.forEach(element => {
+        element.classList.add("visible");
+      });
+    }
+  </script>
 </body>
 </html>
